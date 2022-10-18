@@ -18,8 +18,12 @@ const App = () => {
 
   const clickHandler = (event) => {
     event.preventDefault();
-    if (!validator.isEmail(event.target.value)) {
+    if (!validator.isEmail(signUpInput.email)) {
       setError('the email is invalid');
+    } else if (signUpInput.password.length < 5) {
+      setError('the password is too short');
+    } else if (signUpInput.confirmPassword !== signUpInput.password) {
+      setError('passwords are not equal');
     }
   };
 
